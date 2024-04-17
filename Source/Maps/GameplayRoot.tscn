@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://db3dtugark4cy"]
+
+[node name="GameplayRoot" type="Node2D"]
