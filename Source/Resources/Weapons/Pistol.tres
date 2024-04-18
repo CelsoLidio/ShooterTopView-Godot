@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="PropertiesWeapon" load_steps=3 format=3 uid="uid://dx3sa50l885yx"]
+
+[ext_resource type="PackedScene" uid="uid://b8cmjkgc7hfch" path="res://Source/Objects/Weapons/Bullets/CommonBullet.tscn" id="1_g5gm1"]
+[ext_resource type="Script" path="res://Source/Classes/PropertiesWeapon.gd" id="1_jo414"]
+
+[resource]
+script = ExtResource("1_jo414")
+countBullet = 10
+reloadingTime = 0.5
+cooldownShoot = 0.35
+bulletScene = ExtResource("1_g5gm1")

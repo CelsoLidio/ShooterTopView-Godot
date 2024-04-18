@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b8cmjkgc7hfch"]
+
+[ext_resource type="Texture2D" uid="uid://83gqtnvg3f5c" path="res://Source/Assets/Weapons/Bullets/bulletBeige.png" id="1_ny0c2"]
+[ext_resource type="Script" path="res://Source/Objects/Weapons/Bullets/CommonBullet.gd" id="1_rofv2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y1e0q"]
+size = Vector2(12, 26)
+
+[node name="CommomBullet" type="RigidBody2D"]
+collision_layer = 16
+collision_mask = 58
+gravity_scale = 0.0
+max_contacts_reported = 1
+contact_monitor = true
+script = ExtResource("1_rofv2")
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+scale = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_y1e0q")
+
+[node name="SpriteBullet" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_ny0c2")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
