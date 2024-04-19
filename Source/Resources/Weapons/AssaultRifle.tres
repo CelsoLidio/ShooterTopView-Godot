@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="PropertiesWeapon" load_steps=3 format=3 uid="uid://bjtk30vds333i"]
+[gd_resource type="Resource" script_class="PropertiesWeapon" load_steps=4 format=3 uid="uid://bjtk30vds333i"]
 
+[ext_resource type="Texture2D" uid="uid://bak07t8snh32b" path="res://Source/Assets/Characters/Survivor 1/survivor1_machine.png" id="1_8nbd8"]
 [ext_resource type="Script" path="res://Source/Classes/PropertiesWeapon.gd" id="1_lvk6e"]
 [ext_resource type="PackedScene" uid="uid://b8cmjkgc7hfch" path="res://Source/Objects/Weapons/Bullets/CommonBullet.tscn" id="1_pqmk5"]
 
 [resource]
 script = ExtResource("1_lvk6e")
-countBullet = 10
-reloadingTime = 0.5
-cooldownShoot = 0.05
+countBullet = 50
+reloadingTime = 3.7
+cooldownShoot = 0.08
 bulletScene = ExtResource("1_pqmk5")
+SpritePlayer = ExtResource("1_8nbd8")

@@ -1,19 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://berjo1n7k4b3p"]
+[gd_scene load_steps=7 format=3 uid="uid://berjo1n7k4b3p"]
 
 [ext_resource type="Script" path="res://Source/Objects/Player/MainPlayer.gd" id="1_80pcv"]
 [ext_resource type="Texture2D" uid="uid://bke5dpfy20rgp" path="res://Source/Assets/Characters/Survivor 1/survivor1_stand.png" id="2_uboar"]
 [ext_resource type="PackedScene" uid="uid://dfna84hkxfbhx" path="res://Source/Objects/Weapons/WeaponPlayer.tscn" id="3_xnrfl"]
-[ext_resource type="Resource" uid="uid://dx3sa50l885yx" path="res://Source/Resources/Weapons/Pistol.tres" id="4_uqp3w"]
+[ext_resource type="Resource" uid="uid://bjtk30vds333i" path="res://Source/Resources/Weapons/AssaultRifle.tres" id="4_3ee7h"]
+[ext_resource type="Texture2D" uid="uid://cpev6ooo201v0" path="res://Source/Assets/Characters/Survivor 1/survivor1_reload.png" id="5_yc8qw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1sv5v"]
-radius = 20.0
+radius = 26.7
 
 [node name="MainPlayer" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 collision_layer = 4
 script = ExtResource("1_80pcv")
+defaultSprite = ExtResource("2_uboar")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="SpritePlayer" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 texture = ExtResource("2_uboar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -25,6 +28,7 @@ update_rotation = false
 update_scale = false
 
 [node name="WeaponPlayer" parent="." instance=ExtResource("3_xnrfl")]
-position = Vector2(20, 0)
+position = Vector2(29.3333, 10)
 rotation = 1.5708
-propWeapon = ExtResource("4_uqp3w")
+propWeapon = ExtResource("4_3ee7h")
+spriteReload = ExtResource("5_yc8qw")
