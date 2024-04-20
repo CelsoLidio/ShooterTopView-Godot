@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2608b81oqhjp"]
+
+[ext_resource type="Script" path="res://Source/Objects/Enemys/NormalEnemy/NormalEnemy.gd" id="1_41qvj"]
+[ext_resource type="Texture2D" uid="uid://b0j2b8cwjefgm" path="res://Source/Assets/Characters/Zombie 1/zoimbie1_stand.png" id="2_uk1s4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4ei7"]
+radius = 30.0
+
+[node name="NormalEnemy" type="CharacterBody2D" node_paths=PackedStringArray("navAgent")]
+scale = Vector2(1.5, 1.5)
+collision_layer = 8
+script = ExtResource("1_41qvj")
+navAgent = NodePath("NavigationAgent2D")
+distanceTarget = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g4ei7")
+
+[node name="SpriteEnemy" type="Sprite2D" parent="."]
+texture = ExtResource("2_uk1s4")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

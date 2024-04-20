@@ -58,7 +58,9 @@ Shooting={
 [layer_names]
 
 2d_physics/layer_1="WorldBackground"
+2d_navigation/layer_1="WorldBackground"
 2d_physics/layer_2="WorldObject"
+2d_navigation/layer_2="WorldObject"
 2d_physics/layer_3="Player"
 2d_physics/layer_4="Enemies"
 2d_physics/layer_5="Bullets"

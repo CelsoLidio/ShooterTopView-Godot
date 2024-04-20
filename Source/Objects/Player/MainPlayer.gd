@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+@export var healthPlayer : float = 100
 @export var SPEED_MOVEMENT : int = 300;
 @export var defaultSprite : CompressedTexture2D = null
+
 
 var currCamera : Camera2D = null;
 
@@ -11,7 +13,7 @@ func _ready():
 	
 	%RemoteTransform2D.remote_path = currCamera.get_path()
 	
-	ChangeWeapon(preload("res://Source/Resources/Weapons/AssaultRifle.tres"))
+	ChangeWeapon(load("res://Source/Resources/Weapons/Pistol.tres"))
 	pass
 
 
@@ -53,7 +55,25 @@ func LimitBorder():
 func _physics_process(delta):
 	
 	MovementPlayer()
-	
 	look_at(get_global_mouse_position())
 	
-	pass
+
+func ReceiveDamage(countDamage : float):
+	
+	healthPlayer -= countDamage
+	
+	if healthPlayer <= 0:
+		queue_free()
+	
+	print("Player Recebeu Dano")
+
+
+
+func _on_collider_player_body_entered(body):
+	print("collider")
+	if body is BaseEnemy:
+		ReceiveDamage(10)
+		
+	
+	pass # Replace with function body.
+

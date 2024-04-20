@@ -1,17 +1,21 @@
-[gd_scene load_steps=7 format=3 uid="uid://berjo1n7k4b3p"]
+[gd_scene load_steps=8 format=3 uid="uid://berjo1n7k4b3p"]
 
 [ext_resource type="Script" path="res://Source/Objects/Player/MainPlayer.gd" id="1_80pcv"]
 [ext_resource type="Texture2D" uid="uid://bke5dpfy20rgp" path="res://Source/Assets/Characters/Survivor 1/survivor1_stand.png" id="2_uboar"]
 [ext_resource type="PackedScene" uid="uid://dfna84hkxfbhx" path="res://Source/Objects/Weapons/WeaponPlayer.tscn" id="3_xnrfl"]
-[ext_resource type="Resource" uid="uid://bjtk30vds333i" path="res://Source/Resources/Weapons/AssaultRifle.tres" id="4_3ee7h"]
+[ext_resource type="Resource" uid="uid://dx3sa50l885yx" path="res://Source/Resources/Weapons/Pistol.tres" id="4_sc4s0"]
 [ext_resource type="Texture2D" uid="uid://cpev6ooo201v0" path="res://Source/Assets/Characters/Survivor 1/survivor1_reload.png" id="5_yc8qw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1sv5v"]
-radius = 26.7
+radius = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ixht"]
+radius = 26.0
 
 [node name="MainPlayer" type="CharacterBody2D"]
 scale = Vector2(1.5, 1.5)
 collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_80pcv")
 defaultSprite = ExtResource("2_uboar")
 
@@ -19,7 +23,7 @@ defaultSprite = ExtResource("2_uboar")
 unique_name_in_owner = true
 texture = ExtResource("2_uboar")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="StaticCollider" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_1sv5v")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
@@ -30,5 +34,14 @@ update_scale = false
 [node name="WeaponPlayer" parent="." instance=ExtResource("3_xnrfl")]
 position = Vector2(29.3333, 10)
 rotation = 1.5708
-propWeapon = ExtResource("4_3ee7h")
+propWeapon = ExtResource("4_sc4s0")
 spriteReload = ExtResource("5_yc8qw")
+
+[node name="ColliderPlayer" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 40
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColliderPlayer"]
+shape = SubResource("CircleShape2D_2ixht")
+
+[connection signal="body_entered" from="ColliderPlayer" to="." method="_on_collider_player_body_entered"]
