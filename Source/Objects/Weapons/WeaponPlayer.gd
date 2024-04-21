@@ -6,19 +6,32 @@ extends Node2D
 @export_category("Sprites Player")
 @export var spriteReload : CompressedTexture2D = null
 
+var HUDWeapon : MainHUD
+
 var timerShooting : float = 0.0
 var isShooting : bool = false
-var currentBullets : int = 0
+var currentBullets : int = 0 :
+	set(newCurrentBullet):
+		currentBullets = newCurrentBullet
+		if HUDWeapon:
+			HUDWeapon.SetLabelBullets(currentBullets)
+
 var isReloading : bool = false
+
+
 
 func _ready():
 	
 	if owner != null:
 		await owner.ready
 	
+	HUDWeapon = get_tree().get_first_node_in_group("MainHUD") as MainHUD
+	
 	timerShooting = propWeapon.cooldownShoot
 	currentBullets = propWeapon.countBullet
-	pass
+	
+	
+	
 
 func _input(event):
 	
@@ -100,7 +113,7 @@ func Fire():
 	
 	currentBullets -= 1
 	
-	pass
+
 
 func SetWeapon(newWeapon : PropertiesWeapon):
 	propWeapon = newWeapon

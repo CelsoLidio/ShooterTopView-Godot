@@ -2,10 +2,20 @@ extends Node
 
 var playerRef : CharacterBody2D = null;
 
+var mainHUD : MainHUD
+
+var scoreGame : float :
+	set(newScore):
+		scoreGame = newScore
+		
+		if mainHUD:
+			mainHUD.SetLabelScore(scoreGame) 
+
 func _ready():
-	pass # Replace with function body.
+	
+	mainHUD = get_tree().get_first_node_in_group("MainHUD") as MainHUD
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func AddScore(countScore : float):
+	scoreGame += countScore
+	

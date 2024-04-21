@@ -4,12 +4,12 @@ class_name BaseEnemy
 @export_category("Properties Enemy")
 @export var health : float = 100
 @export_range(0.5,2.5) var movSpeed : float = 1.2
+@export var pointValue : float = 50
 
 @export_category("Navigation Enemy")
 @export var navAgent : NavigationAgent2D
 @export_range(5.0,50.0) var distanceTarget : float = 10
 @export_range(0.5,2.0) var timerDetectTarget : float = 1.0
-
 
 var targetObj : CharacterBody2D
 
@@ -75,4 +75,5 @@ func ReceiveDamage(countDamage : float):
 	
 
 func DestroyEnemy():
+	GameManager.AddScore(pointValue)
 	queue_free()

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://berjo1n7k4b3p"]
+[gd_scene load_steps=9 format=3 uid="uid://berjo1n7k4b3p"]
 
 [ext_resource type="Script" path="res://Source/Objects/Player/MainPlayer.gd" id="1_80pcv"]
 [ext_resource type="Texture2D" uid="uid://bke5dpfy20rgp" path="res://Source/Assets/Characters/Survivor 1/survivor1_stand.png" id="2_uboar"]
+[ext_resource type="Resource" uid="uid://bjtk30vds333i" path="res://Source/Resources/Weapons/AssaultRifle.tres" id="3_lg2my"]
 [ext_resource type="PackedScene" uid="uid://dfna84hkxfbhx" path="res://Source/Objects/Weapons/WeaponPlayer.tscn" id="3_xnrfl"]
 [ext_resource type="Resource" uid="uid://dx3sa50l885yx" path="res://Source/Resources/Weapons/Pistol.tres" id="4_sc4s0"]
 [ext_resource type="Texture2D" uid="uid://cpev6ooo201v0" path="res://Source/Assets/Characters/Survivor 1/survivor1_reload.png" id="5_yc8qw"]
@@ -17,7 +18,8 @@ scale = Vector2(1.5, 1.5)
 collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_80pcv")
-defaultSprite = ExtResource("2_uboar")
+initSprite = ExtResource("2_uboar")
+initWeapon = ExtResource("3_lg2my")
 
 [node name="SpritePlayer" type="Sprite2D" parent="."]
 unique_name_in_owner = true

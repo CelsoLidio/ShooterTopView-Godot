@@ -10,6 +10,7 @@ extends Node
 
 func _ready():
 	
+	spawnersPositions.clear()
 	for eachChild in get_children():
 		if eachChild is Marker2D:
 			spawnersPositions.append(eachChild)

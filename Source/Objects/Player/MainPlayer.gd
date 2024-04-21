@@ -1,18 +1,32 @@
 extends CharacterBody2D
 
-@export var healthPlayer : float = 100
+@export var maxHealthPlayer : float = 100
 @export var SPEED_MOVEMENT : int = 300;
-@export var defaultSprite : CompressedTexture2D = null
+@export var initSprite : CompressedTexture2D = null
+@export var initWeapon : PropertiesWeapon = null
 
+var healthPlayer : float:
+	set(newHealth):
+		healthPlayer = newHealth
+		
+		if playerHUD:
+			playerHUD.SetLabelHealth(healthPlayer)
+			
+		
+	
+
+var playerHUD : MainHUD
 var currCamera : Camera2D = null;
 
 func _ready():
 	GameManager.playerRef = self;
 	currCamera = get_viewport().get_camera_2d();
 	%RemoteTransform2D.remote_path = currCamera.get_path()
-	ChangeWeapon(load("res://Source/Resources/Weapons/AssaultRifle.tres"))
+	ChangeWeapon(initWeapon)
 	
+	playerHUD = get_tree().get_first_node_in_group("MainHUD") as MainHUD
 	
+	healthPlayer = maxHealthPlayer
 
 
 func SetSpritePlayer(newSprite : CompressedTexture2D):
@@ -29,7 +43,7 @@ func ChangeWeapon(newWeapon : PropertiesWeapon = null):
 	var newSpritePlayer : CompressedTexture2D = newWeapon.SpritePlayer as CompressedTexture2D
 	
 	if newWeapon == null:
-		newSpritePlayer = defaultSprite
+		newSpritePlayer = initSprite
 	
 	weaponPlayer.SetWeapon(newWeapon)
 	SetSpritePlayer(newSpritePlayer)
