@@ -4,7 +4,7 @@ var playerRef : CharacterBody2D = null;
 
 var mainHUD : MainHUD
 
-var scoreGame : float :
+var scoreGame : float:
 	set(newScore):
 		scoreGame = newScore
 		
@@ -14,6 +14,8 @@ var scoreGame : float :
 func _ready():
 	
 	mainHUD = get_tree().get_first_node_in_group("MainHUD") as MainHUD
+	
+	scoreGame = 0
 
 
 func AddScore(countScore : float):
