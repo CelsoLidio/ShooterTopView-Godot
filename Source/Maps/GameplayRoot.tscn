@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://db3dtugark4cy"]
+[gd_scene load_steps=7 format=3 uid="uid://db3dtugark4cy"]
 
 [ext_resource type="Script" path="res://Source/Maps/GameplayRoot.gd" id="1_5m461"]
 [ext_resource type="PackedScene" uid="uid://berjo1n7k4b3p" path="res://Source/Objects/Player/MainPlayer.tscn" id="1_wpwe7"]
 [ext_resource type="PackedScene" uid="uid://bftvjer8skc2q" path="res://Source/Objects/Tileset/TileMap.tscn" id="2_254d8"]
 [ext_resource type="PackedScene" uid="uid://laq0mw13haw1" path="res://Source/Objects/Camera/mainCamera.tscn" id="3_vg1ov"]
 [ext_resource type="PackedScene" uid="uid://d2608b81oqhjp" path="res://Source/Objects/Enemys/NormalEnemy/NormalEnemy.tscn" id="5_jybh3"]
+[ext_resource type="PackedScene" uid="uid://eqygbpkw2q58" path="res://Source/Objects/Spawners/EnemySpawn/EnemySpawn.tscn" id="6_pmdug"]
 
 [node name="GameplayRoot" type="Node2D"]
 script = ExtResource("1_5m461")
@@ -26,5 +27,27 @@ limit_top = 0
 limit_right = 2300
 limit_bottom = 1275
 
-[node name="NormalEnemy" parent="." instance=ExtResource("5_jybh3")]
-position = Vector2(267, 507)
+[node name="EnemySpawn" parent="." instance=ExtResource("6_pmdug")]
+enemysType = Array[PackedScene]([ExtResource("5_jybh3")])
+timeSpawning = 0.8
+
+[node name="Marker2D" type="Marker2D" parent="EnemySpawn"]
+position = Vector2(1506, 253)
+
+[node name="Marker2D2" type="Marker2D" parent="EnemySpawn"]
+position = Vector2(1464, 993)
+
+[node name="Marker2D3" type="Marker2D" parent="EnemySpawn"]
+position = Vector2(1136, 170)
+
+[node name="Marker2D4" type="Marker2D" parent="EnemySpawn"]
+position = Vector2(71, 1140)
+
+[node name="Marker2D5" type="Marker2D" parent="EnemySpawn"]
+position = Vector2(332, 230)
+
+[node name="Marker2D6" type="Marker2D" parent="EnemySpawn"]
+position = Vector2(1906, 1061)
+
+[node name="Marker2D7" type="Marker2D" parent="EnemySpawn"]
+position = Vector2(2118, 483)

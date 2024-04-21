@@ -3,14 +3,19 @@ extends Node2D
 @export_category("Properties Weapon")
 @export var propWeapon : PropertiesWeapon;
 
-var timerShooting : float = 0.0
-var isShooting : bool = false
-var currentBullets : int = 0
-
 @export_category("Sprites Player")
 @export var spriteReload : CompressedTexture2D = null
 
+var timerShooting : float = 0.0
+var isShooting : bool = false
+var currentBullets : int = 0
+var isReloading : bool = false
+
 func _ready():
+	
+	if owner != null:
+		await owner.ready
+	
 	timerShooting = propWeapon.cooldownShoot
 	currentBullets = propWeapon.countBullet
 	pass
@@ -23,7 +28,9 @@ func _input(event):
 	if Input.is_action_just_released("Shooting"):
 		StopShooting()
 	
-	pass
+	if Input.is_action_just_pressed("Reload"):
+		Reloading()
+	
 
 func _physics_process(delta):
 	timerShooting -= delta
@@ -40,6 +47,9 @@ func StartShooting():
 	
 	while isShooting:
 		await get_tree().process_frame
+		
+		if isReloading:
+			continue
 		
 		if currentBullets <= 0:
 			Reloading()
@@ -58,11 +68,13 @@ func StopShooting():
 
 func Reloading():
 	
-	if propWeapon == null:
+	if propWeapon == null or isReloading:
 		return
 	
 	if owner.has_method("SetSpritePlayer"):
 		owner.SetSpritePlayer(spriteReload)
+	
+	isReloading = true
 	
 	await get_tree().create_timer(propWeapon.reloadingTime).timeout
 	
@@ -70,7 +82,7 @@ func Reloading():
 		owner.ChangeWeapon(propWeapon)
 	
 	currentBullets = propWeapon.countBullet
-	
+	isReloading = false
 
 func Fire():
 	

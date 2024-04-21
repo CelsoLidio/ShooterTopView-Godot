@@ -11,15 +11,11 @@ class_name BaseEnemy
 @export_range(0.5,2.0) var timerDetectTarget : float = 1.0
 
 
-
 var targetObj : CharacterBody2D
-
-
 
 func _ready():
 	
 	targetObj = GameManager.playerRef
-	
 	DetectTarget()
 
 
@@ -59,6 +55,12 @@ func LookingTarget():
 	
 
 func DetectTarget():
+	
+	if targetObj == null:
+		await get_tree().create_timer(timerDetectTarget).timeout
+		DetectTarget()
+		return
+	
 	navAgent.target_position = targetObj.position
 	await get_tree().create_timer(timerDetectTarget).timeout
 	DetectTarget()
