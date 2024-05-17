@@ -27,6 +27,5 @@ layer_3/tile_data = PackedInt32Array(1179678, 1638400, 7, 1179677, 1572864, 9, 9
 script = ExtResource("1_5041t")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_5wxkm")
 navigation_layers = 3

@@ -10,6 +10,7 @@ var HUDWeapon : MainHUD
 
 var timerShooting : float = 0.0
 var isShooting : bool = false
+
 var currentBullets : int = 0 :
 	set(newCurrentBullet):
 		currentBullets = newCurrentBullet
@@ -29,7 +30,6 @@ func _ready():
 	
 	timerShooting = propWeapon.cooldownShoot
 	currentBullets = propWeapon.countBullet
-	
 	
 	
 

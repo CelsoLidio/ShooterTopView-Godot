@@ -6,8 +6,8 @@
 
 [resource]
 script = ExtResource("1_lvk6e")
-countBullet = 50
+countBullet = 30
 reloadingTime = 3.7
-cooldownShoot = 0.08
+cooldownShoot = 0.1
 bulletScene = ExtResource("1_pqmk5")
 SpritePlayer = ExtResource("1_8nbd8")
