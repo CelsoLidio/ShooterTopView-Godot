@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shooter Top View-godot"
-run/main_scene="res://Source/Maps/GameplayRoot.tscn"
+run/main_scene="res://Source/Interface/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 

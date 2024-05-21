@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3ppfqr3iyg7j"]
+
+[ext_resource type="Script" path="res://Source/Interface/MainMenu/PauseController/PauseController.gd" id="1_ow3x6"]
+
+[node name="PauseController" type="Node"]
+script = ExtResource("1_ow3x6")
+pauseScene = "res://Source/Interface/MainMenu/MainMenu.tscn"

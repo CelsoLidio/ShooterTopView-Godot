@@ -14,7 +14,7 @@ var isShooting : bool = false
 var currentBullets : int = 0 :
 	set(newCurrentBullet):
 		currentBullets = newCurrentBullet
-		if HUDWeapon:
+		if HUDWeapon != null:
 			HUDWeapon.SetLabelBullets(currentBullets)
 
 var isReloading : bool = false
@@ -109,7 +109,7 @@ func Fire():
 	bulletInst.global_position = global_position
 	bulletInst.global_rotation_degrees = global_rotation_degrees
 	
-	get_tree().root.add_child(bulletInst);
+	get_tree().current_scene.add_child(bulletInst);
 	
 	currentBullets -= 1
 	

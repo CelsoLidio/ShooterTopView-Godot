@@ -9,7 +9,7 @@ var healthPlayer : float:
 	set(newHealth):
 		healthPlayer = newHealth
 		
-		if playerHUD:
+		if playerHUD != null:
 			playerHUD.SetLabelHealth(healthPlayer)
 			
 		
@@ -20,12 +20,10 @@ var currCamera : Camera2D = null;
 
 func _ready():
 	GameManager.playerRef = self;
+	playerHUD = get_tree().get_first_node_in_group("MainHUD") as MainHUD
 	currCamera = get_viewport().get_camera_2d();
 	%RemoteTransform2D.remote_path = currCamera.get_path()
 	ChangeWeapon(initWeapon)
-	
-	playerHUD = get_tree().get_first_node_in_group("MainHUD") as MainHUD
-	
 	healthPlayer = maxHealthPlayer
 
 
@@ -80,6 +78,7 @@ func ReceiveDamage(countDamage : float):
 	
 	if healthPlayer <= 0:
 		queue_free()
+		GameManager.GameOver()
 
 
 

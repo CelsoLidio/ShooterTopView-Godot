@@ -1,0 +1,185 @@
+[gd_scene load_steps=10 format=3 uid="uid://dg1wtljjsak7v"]
+
+[ext_resource type="Script" path="res://Source/Interface/MainMenu/MainMenu.gd" id="1_bvt7e"]
+[ext_resource type="Texture2D" uid="uid://bw1r6tj6j644v" path="res://Source/Assets/Characters/Zombie 1/zoimbie1_hold.png" id="2_lqy82"]
+[ext_resource type="Texture2D" uid="uid://be2og48qyxhmm" path="res://Source/Assets/Characters/Survivor 1/survivor1_gun.png" id="3_8sj7q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q262i"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.72549, 0.72549, 0.72549, 0.6)
+shadow_size = 10
+
+[sub_resource type="SystemFont" id="SystemFont_sjoqp"]
+font_names = PackedStringArray("Arial")
+force_autohinter = true
+hinting = 2
+
+[sub_resource type="SystemFont" id="SystemFont_7h1s7"]
+font_names = PackedStringArray("Arial")
+hinting = 2
+multichannel_signed_distance_field = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sl3bn"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.72549, 0.72549, 0.72549, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ikoei"]
+bg_color = Color(0.352941, 0.352941, 0.352941, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.72549, 0.72549, 0.72549, 0.6)
+shadow_size = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x7fnf"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+shadow_color = Color(0.72549, 0.72549, 0.72549, 0.6)
+shadow_size = 10
+
+[node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_bvt7e")
+gameplayMap = "res://Source/Maps/GameplayRoot.tscn"
+
+[node name="BackgroundMenu" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="BackgroundMenu"]
+layout_mode = 2
+color = Color(0.12549, 0.12549, 0.12549, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="BackgroundMenu"]
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 400
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 100
+
+[node name="TextureRect" type="TextureRect" parent="BackgroundMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("2_lqy82")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="BackgroundMenu/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 5
+texture = ExtResource("3_8sj7q")
+expand_mode = 3
+stretch_mode = 5
+flip_h = true
+
+[node name="ContentMenu" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentMenu"]
+layout_mode = 2
+theme_override_constants/margin_top = 150
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMenu/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PanelContainer" type="PanelContainer" parent="ContentMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_q262i")
+
+[node name="MarginContainer2" type="MarginContainer" parent="ContentMenu/MarginContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="NameGame" type="Label" parent="ContentMenu/MarginContainer/VBoxContainer/PanelContainer/MarginContainer2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = SubResource("SystemFont_sjoqp")
+theme_override_font_sizes/font_size = 100
+text = "TopView Shooter"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ContentMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ContentMenu/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+size_flags_stretch_ratio = 2.9
+theme_override_constants/separation = 25
+
+[node name="TabsStartBTMenu" type="TabContainer" parent="ContentMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+clip_tabs = false
+tabs_visible = false
+
+[node name="StartGameBT" type="Button" parent="ContentMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabsStartBTMenu"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_7h1s7")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_sl3bn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ikoei")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x7fnf")
+text = "START GAME"
+
+[node name="Continue" type="Button" parent="ContentMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabsStartBTMenu"]
+visible = false
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_7h1s7")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_sl3bn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ikoei")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x7fnf")
+text = "CONTINUE"
+
+[node name="QuitBT" type="Button" parent="ContentMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = SubResource("SystemFont_7h1s7")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_sl3bn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ikoei")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_x7fnf")
+text = "QUIT"
+
+[connection signal="pressed" from="ContentMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabsStartBTMenu/StartGameBT" to="." method="_on_start_game_bt_pressed"]
+[connection signal="pressed" from="ContentMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/TabsStartBTMenu/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="ContentMenu/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/QuitBT" to="." method="_on_quit_bt_pressed"]

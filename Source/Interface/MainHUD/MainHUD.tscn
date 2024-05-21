@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dsq7rblse2ihb"]
+[gd_scene load_steps=13 format=3 uid="uid://dsq7rblse2ihb"]
 
 [ext_resource type="Script" path="res://Source/Interface/MainHUD/MainHUD.gd" id="1_2q1lf"]
 
@@ -29,12 +29,15 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="SystemFont" id="SystemFont_0nmt7"]
-font_names = PackedStringArray("Serif")
+font_names = PackedStringArray("Arial")
+hinting = 2
 subpixel_positioning = 0
+multichannel_signed_distance_field = true
 
 [sub_resource type="SystemFont" id="SystemFont_duk2u"]
 font_names = PackedStringArray("Serif")
 subpixel_positioning = 0
+multichannel_signed_distance_field = true
 
 [sub_resource type="SystemFont" id="SystemFont_5j481"]
 font_names = PackedStringArray("Serif")
@@ -43,6 +46,21 @@ subpixel_positioning = 0
 [sub_resource type="SystemFont" id="SystemFont_qy07e"]
 font_names = PackedStringArray("Serif")
 subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_5hdco"]
+font_names = PackedStringArray("Arial")
+hinting = 2
+subpixel_positioning = 0
+multichannel_signed_distance_field = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0g12j"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ugr7r"]
+bg_color = Color(0.329412, 0.329412, 0.329412, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80lpg"]
+bg_color = Color(1, 1, 1, 1)
 
 [node name="MainHud" type="CanvasLayer" groups=["MainHUD"]]
 script = ExtResource("1_2q1lf")
@@ -155,3 +173,141 @@ theme_override_font_sizes/font_size = 35
 text = "100"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="GameOver" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+
+[node name="GameOverBG" type="MarginContainer" parent="GameOver"]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundColor" type="ColorRect" parent="GameOver/GameOverBG"]
+layout_mode = 2
+color = Color(0, 0, 0, 0.705882)
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 150
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 150
+theme_override_constants/margin_bottom = 100
+
+[node name="GameOverArea" type="MarginContainer" parent="GameOver/MarginContainer"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOver/MarginContainer/GameOverArea"]
+layout_mode = 2
+color = Color(0, 0.419608, 0.419608, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver/MarginContainer/GameOverArea"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer/GameOverArea/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="GameOverText" type="Label" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_0nmt7")
+theme_override_font_sizes/font_size = 75
+text = "GameOver"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ScoreGameOver" type="Label" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+theme_override_fonts/font = SubResource("SystemFont_duk2u")
+theme_override_font_sizes/font_size = 35
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Division" type="ReferenceRect" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+border_color = Color(1, 1, 1, 1)
+border_width = 2.0
+editor_only = false
+
+[node name="CountScoreGameOver" type="Label" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = SubResource("SystemFont_0nmt7")
+theme_override_font_sizes/font_size = 35
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 35
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 35
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="RestartBT" type="Button" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("SystemFont_5hdco")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_0g12j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ugr7r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_80lpg")
+text = "RESTART"
+
+[node name="Spacing" type="MarginContainer" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MenuBT" type="Button" parent="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = SubResource("SystemFont_5hdco")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_0g12j")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ugr7r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_80lpg")
+text = "MENU"
+
+[connection signal="tree_exiting" from="GameOver" to="." method="_on_game_over_tree_exiting"]
+[connection signal="pressed" from="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/RestartBT" to="." method="_on_restart_bt_pressed"]
+[connection signal="pressed" from="GameOver/MarginContainer/GameOverArea/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/MarginContainer/HBoxContainer2/MenuBT" to="." method="_on_menu_bt_pressed"]

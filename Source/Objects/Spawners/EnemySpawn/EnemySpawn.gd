@@ -27,6 +27,6 @@ func _on_timer_spawn_timeout():
 	var instEnemy : BaseEnemy = currEnemy.instantiate() as BaseEnemy
 	instEnemy.position = pointSpawn.position
 	
-	get_tree().root.add_child(instEnemy)
+	get_tree().current_scene.add_child(instEnemy)
 	
 	

@@ -8,16 +8,33 @@ var scoreGame : float:
 	set(newScore):
 		scoreGame = newScore
 		
-		if mainHUD:
-			mainHUD.SetLabelScore(scoreGame) 
+		if GetMainHUD() != null:
+			mainHUD.SetLabelScore(scoreGame)
+		
 
 func _ready():
 	
-	mainHUD = get_tree().get_first_node_in_group("MainHUD") as MainHUD
-	
-	scoreGame = 0
-
+	ResetGame()
 
 func AddScore(countScore : float):
 	scoreGame += countScore
 	
+
+func GameOver():
+	get_tree().paused = true
+	
+	if GetMainHUD() != null:
+		mainHUD.GameOverHUD()
+	
+
+func GetMainHUD() -> MainHUD:
+	
+	
+	if mainHUD == null:
+		mainHUD = get_tree().get_first_node_in_group("MainHUD")
+	
+	return mainHUD
+
+
+func ResetGame():
+	scoreGame = 0
